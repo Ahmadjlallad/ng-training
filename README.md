@@ -83,3 +83,14 @@ export class ServerComponent {
 }
 
 ```
+
+## Data Binding allow communication between two Component
+
+- using string interpolation {{}}
+    - <!-- only strings --> its has to resolve it to string
+    - we can call a methods and insure it will return a string
+- property Binding [property]="data"
+    - [disabled]="allowNewServer" directly binding a property tp dom element
+    - we can bind to all the html or dom elemant
+- event Binding [(event)="expression"]
+- Two Way binding ([ngModel]="data")
