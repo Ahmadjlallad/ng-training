@@ -94,3 +94,27 @@ export class ServerComponent {
     - we can bind to all the html or dom elemant
 - event Binding [(event)="expression"]
 - Two Way binding ([ngModel]="data")
+## events 
+
+```angular2html
+  (click)= "funcName($event)"
+   <!-- $event reserve world -->
+```
+- two way data binding
+```angular2html
+<input class="form-control" type="text" [(ngModel)]="serverName" />
+using it its simlar to onChange and value in react its allow us to bind the value in two way
+```
+## directives 
+- are instrucins in the dom
+
+- components are kind like a directives with template
+- strucuer directives indecated by *
+  - it change the dom by adding or removing
+    - *ngIf="" has to return a booline
+    - or *ngFor = "let nameOfTempVar nameOfTheItterbalVar"
+  - attrebute directives
+    - dont add or change the dom but it change the elemant it self
+    - like ngStyle we can bind it using [] notion
+    [ngStyle] = { backGroundColor: getColor() } it allow to update style dynmicly
+    - [ngClass] same as ngStyle
