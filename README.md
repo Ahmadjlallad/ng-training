@@ -23,34 +23,27 @@
 - we have a script will be injected to html and appModule will be bootstrap
 
 ```ts
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {AppComponent} from './app.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { AppComponent } from "./app.component";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
-// tall how the app will be fit togother 
+// tall how the app will be fit togother
 @NgModule({
-    declarations: [
-        AppComponent
-    ],
-    imports: [
-        BrowserModule,
-        NgbModule,
-    ],
-    providers: [],
-    // bootstrap component should be recognize in the html file
-    // if we did add a new component we should add it in declarations array and 
-    bootstrap: [AppComponent]
-    /*
+  declarations: [AppComponent],
+  imports: [BrowserModule, NgbModule],
+  providers: [],
+  // bootstrap component should be recognize in the html file
+  // if we did add a new component we should add it in declarations array and
+  bootstrap: [AppComponent],
+  /*
     * declarations—this application's lone component.
       imports—import BrowserModule to have browser specific services such as DOM rendering, sanitization, and location.
         providers—the service providers.
       bootstrap—the root component that Angular creates and inserts into the index.html host web page.
     * */
 })
-export class AppModule {
-}
-
+export class AppModule {}
 ```
 
 ## components
@@ -59,62 +52,127 @@ export class AppModule {
 - or create it by your self this is done creating 4 files and adding
 
 ```ts
-  import {Component} from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
-    selector: "app-server", // should be unique templateUrl: "./server.component.html"
-    // name unique to dont over wirte existing component
-    // we could use any type of css selector 
-    // selector: ".app-server",
-    // <div class="app-server">
-    // selector: "[app-server]",
-    // <div app-server>
-    // selector: "#app-server",
-    //  point the html file
-    // inline styles 
-    stayles: [`
-    h3 {
-      color: "blue";
-    }
-    `]
+  selector: "app-server", // should be unique templateUrl: "./server.component.html"
+  // name unique to dont over wirte existing component
+  // we could use any type of css selector
+  // selector: ".app-server",
+  // <div class="app-server">
+  // selector: "[app-server]",
+  // <div app-server>
+  // selector: "#app-server",
+  //  point the html file
+  // inline styles
+  styles: [
+    `
+      h3 {
+        color: "blue";
+      }
+    `,
+  ],
 })
-export class ServerComponent {
-
-}
-
+export class ServerComponent {}
 ```
 
 ## Data Binding allow communication between two Component
 
 - using string interpolation {{}}
-    - <!-- only strings --> its has to resolve it to string
-    - we can call a methods and insure it will return a string
+  - <!-- only strings --> its has to resolve it to string
+  - we can call a methods and insure it will return a string
 - property Binding [property]="data"
-    - [disabled]="allowNewServer" directly binding a property tp dom element
-    - we can bind to all the html or dom elemant
+  - [disabled]="allowNewServer" directly binding a property tp dom element
+  - we can bind to all the html or dom elemant
 - event Binding [(event)="expression"]
 - Two Way binding ([ngModel]="data")
-## events 
+
+## events
 
 ```angular2html
   (click)= "funcName($event)"
    <!-- $event reserve world -->
 ```
+
 - two way data binding
+
 ```angular2html
 <input class="form-control" type="text" [(ngModel)]="serverName" />
-using it its simlar to onChange and value in react its allow us to bind the value in two way
+using it its similar to onChange and value in react its allow us to bind the value in two way
 ```
-## directives 
-- are instrucins in the dom
+
+## directives
+
+- are instructing in the dom
 
 - components are kind like a directives with template
-- strucuer directives indecated by *
+- structure directives indicated by \*
   - it change the dom by adding or removing
-    - *ngIf="" has to return a booline
-    - or *ngFor = "let nameOfTempVar nameOfTheItterbalVar"
-  - attrebute directives
-    - dont add or change the dom but it change the elemant it self
+    - \*ngIf="" has to return a boolin
+    - or \*ngFor = "let nameOfTempVar nameOfTheIttirbalVar"
+  - attribute directives
+    - don't add or change the dom but it change the element it self
     - like ngStyle we can bind it using [] notion
-    [ngStyle] = { backGroundColor: getColor() } it allow to update style dynmicly
+      [ngStyle] = { backGroundColor: getColor() } it allow to update style dynamically
     - [ngClass] same as ngStyle
+
+## bind vars from a parent to child
+
+using `@Input()` to get access to the parent probities
+
+```ts
+export class Cockpit implements OnInit {
+  constructor() {}
+
+  @Input() element: {
+    type: string;
+    name: string;
+    content: string;
+  };
+  ngOnInit() {}
+}
+```
+
+```angular2html
+
+  <server-element
+    *ngFor="let serverElement of serverElements"
+    [element]="serverElement"
+  ></server-element>
+```
+
+## create a custom event to listen on it using its like passing a setState to child
+
+```ts
+export class Cockpit {
+  constructor() {}
+  @Output("cServer") serverCreated = new EventEmitter<{ serverName: string; serverContent }>();
+  @Output() bluePrintCreated = new EventEmitter<{ serverName: string; serverContent }>();
+  onAddCreated(){
+    this.serverCreated.emit({this.serverName});
+  }
+
+}
+
+```
+
+## to get a reference to element
+
+```html
+<input #serverRef />
+```
+
+and we can use it in the template its like the react ref
+and we can get it by using any bind way
+
+- ViewChild decorator it works as react ref exactly
+
+```ts
+@ViewChild()
+```
+
+## ng-content children like
+
+```angular2html
+<ng-content>ahmad</ng-content>
+```
