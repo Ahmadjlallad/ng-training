@@ -1,9 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h3>iam</h3>
+      <h3 myFirstDirective>first the directives</h3>
+      <h3 DirectivesDirective [hightLightColor]="'red'" [defColor]="'green'">
+        directives with renderer
+      </h3>
+
       <app-server></app-server>
       <app-servers></app-servers>
+      <app-game-control></app-game-control>
     </div>
   </div>
 </div>
