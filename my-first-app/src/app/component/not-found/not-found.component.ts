@@ -2,14 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-font-found',
-  templateUrl: './font-found.component.html',
-  styleUrls: ['./font-found.component.scss']
+  templateUrl: './not-found.component.html',
+  styleUrls: ['./not-found.component.scss'],
 })
 export class FontFoundComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

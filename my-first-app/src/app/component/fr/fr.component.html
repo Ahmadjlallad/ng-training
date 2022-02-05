@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <!-- [formGroup]="signupForm" and use (ngSubmit) but without the the refrebsece to the form from the temp -->
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <!-- nesting using  formGroupName="userData"-->
+        <div class="form-group" formGroupName="userData">
+          <label for="username">Username</label>
+          <!-- formControlName="username" to tell the ts -->
+          <input
+            type="text"
+            formControlName="username"
+            id="username"
+            class="form-control"
+          />
+          <!-- to get the control for the ts we have use the get method on the form group property -->
+          <!-- and get tacks the path if we have the nested form groups  -->
+          <span
+            *ngIf="
+              !signupForm.get('userData.username').valid &&
+              signupForm.get('userData.username').touched
+            "
+            class="alert-danger"
+            >please enter a valid username</span
+          >
+        </div>
+        <!-- nesting using  formGroupName="userData"-->
+
+        <div class="form-group" formGroupName="userData">
+          <label for="email">email</label>
+          <input
+            type="text"
+            id="email"
+            class="form-control"
+            formControlName="email"
+          />
+        </div>
+
+        <div class="radio" *ngFor="let gender of genders">
+          <label>
+            <input formControlName="gender" type="radio" [value]="gender" />{{
+              gender
+            }}
+          </label>
+        </div>
+        <div formArrayName="controls">
+          <button class="btn btn-outline-primary" (click)="onAddControls()">
+            Add control
+          </button>
+          <div
+            class="form-group"
+            *ngFor="let control of controls; let i = index"
+          >
+            <input type="text" class="form-control" [formControlName]="i" />
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

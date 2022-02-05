@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 export class GardeService implements CanActivate {
   constructor(private router: Router) {}
   isAuth = false;
+  // isAuth = true;
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -21,6 +22,7 @@ export class GardeService implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.router.navigate(['/']);
+    if (this.isAuth) return true;
+    else return this.router.navigate(['/']);
   }
 }

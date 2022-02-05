@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-
-@Injectable()
+import { Subject } from 'rxjs';
+@Injectable({
+  providedIn: 'root',
+})
 export class userService {
   activeUsers = ['Max', 'Anna'];
   inactiveUsers = ['Chris', 'Manu'];
@@ -14,4 +16,5 @@ export class userService {
     this.activeUsers.push(this.inactiveUsers[id]);
     this.inactiveUsers.splice(id, 1);
   }
+  activatedEmitter = new Subject<boolean>();
 }

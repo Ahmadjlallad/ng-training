@@ -1,6 +1,5 @@
-import { Component, DoCheck, Input, OnInit } from '@angular/core';
-import { AccountService } from 'shared/account.service';
-import { NavService } from 'shared/nav.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { userService } from 'shared/user.service';
 
 @Component({
@@ -8,15 +7,16 @@ import { userService } from 'shared/user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements DoCheck, OnInit {
-  constructor(private account: AccountService, private nav: NavService) {}
-  navTo;
-  title = 'my-first-app';
-  onChangeChr() {
-    this.account.logChr();
+export class AppComponent implements OnInit, OnDestroy {
+  userActivated = false;
+  constructor(private user: userService) {}
+  sub: Subscription;
+  ngOnInit(): void {
+    this.sub = this.user.activatedEmitter.subscribe((isActive) => {
+      this.userActivated = isActive;
+    });
   }
-  ngOnInit(): void {}
-  ngDoCheck(): void {
-    this.navTo = this.nav.navigate;
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }

@@ -1,0 +1,139 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form
+        (ngSubmit)="onSubmit(f)"
+        #f="ngForm"
+        [ngClass]="
+          'needs-validation' + !f.valid && f.touched && 'was-validated'
+        "
+      >
+        <div id="user-data" ngModelGroup="userData">
+          <div class="form-group">
+            <label class="form-label" for="username">Username</label>
+            <input
+              (ngModelChange)="(username)"
+              [(ngModel)]="username"
+              type="text"
+              id="username"
+              class="form-control"
+              name="username"
+              ngModel
+              required
+              #nameRef="ngModel"
+            />
+            <div
+              [ngClass]="[
+                !nameRef.valid && nameRef.touched
+                  ? ' invalid-feedback '
+                  : 'valid-feedback'
+              ]"
+            >
+              {{
+                !nameRef.valid
+                  ? "Please select a valid username"
+                  : "valid username"
+              }}
+            </div>
+          </div>
+          <button
+            class="btn btn-default"
+            type="button"
+            (click)="suggestUserName()"
+          >
+            Suggest an Username
+          </button>
+          <div class="form-group">
+            <label class="form-label" for="email">Mail</label>
+            <input
+              required
+              email
+              (ngModelChange)="onChange($event)"
+              type="email"
+              id="email"
+              class="form-control"
+              name="email"
+              ngModel
+              #emailRef="ngModel"
+            />
+            <div
+              [ngClass]="[
+                !emailRef.valid && emailRef.touched
+                  ? ' invalid-feedback '
+                  : 'valid-feedback'
+              ]"
+            >
+              {{
+                !emailRef.valid ? "Please select a valid email" : "valid email"
+              }}
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="secret">Secret Questions</label>
+          <select
+            [name]="'select'"
+            id="secret"
+            class="form-control"
+            [ngModel]="defQus"
+          >
+            <option value="pet">Your first Pet?</option>
+            <option value="teacher">Your first teacher?</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="validationTextarea" class="form-label"
+            >Question Answer</label
+          >
+          <textarea
+            class="form-control is-invalid"
+            id="validationTextarea"
+            placeholder="Question Answer"
+            required
+            #textRef="ngModel"
+            name="questionAnswer"
+            [(ngModel)]="answer"
+          ></textarea>
+          <div
+            [class]="
+              !textRef.valid && textRef.touched
+                ? 'invalid-feedback'
+                : 'valid-feedback'
+            "
+          >
+            Please enter a message in the textarea.
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check" *ngFor="let gender of genders">
+            <input
+              type="radio"
+              class="form-check-input"
+              [name]="'gender'"
+              [value]="gender.toLowerCase()"
+              required
+              ngModel
+            />
+            <label class="form-check-label" for="validationFormCheck2">{{
+              gender
+            }}</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3">
+            <button
+              class="btn btn-primary"
+              type="submit"
+              [disabled]="f.invalid"
+            >
+              Submit
+            </button>
+          </div>
+          <button (click)="resetTheForm()" class="btn btn-info" type="button">
+            Reset
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

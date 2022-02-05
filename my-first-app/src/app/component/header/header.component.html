@@ -2,8 +2,8 @@
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item" (click)="navTo('/')">
-          <a class="nav-link" [routerLink]="'/users'">/</a>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/'">Main</a>
         </li>
         <li
           class="nav-item"
@@ -15,14 +15,35 @@
           <a class="nav-link" routerLink="/home">Home</a>
         </li>
         <li role="presentation" routerLinkActive="active">
+          <a class="nav-link" routerLink="/td">Template Form Driven</a>
+        </li>
+        <li role="presentation" routerLinkActive="active">
+          <a class="nav-link" routerLink="/fr">Reactive Form Driven</a>
+        </li>
+        <li role="presentation" routerLinkActive="active">
           <a class="nav-link" routerLink="/servers">Servers</a>
         </li>
         <li role="presentation" routerLinkActive="active">
           <a class="nav-link" [routerLink]="'/users'">Users</a>
         </li>
+        <li role="presentation" routerLinkActive="active">
+          <a class="nav-link" routerLink="home-observables">Home Observables</a>
+        </li>
 
-        <li class="nav-item" (click)="navTo('/services')">
-          <a class="nav-link" [routerLink]="'/services'">Serves</a>
+        <li role="presentation" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['user-observables', 1]">
+            User 1 Observables
+          </a>
+        </li>
+
+        <li role="presentation" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['user-observables', 2]">
+            User 2 Observables
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/services'">Services</a>
         </li>
       </ul>
     </div>

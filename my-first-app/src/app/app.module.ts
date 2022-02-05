@@ -26,10 +26,17 @@ import { ServersService } from './component/routing/servers/servers.service';
 import { UserComponent } from './component/routing/users/user/user.component';
 import { UsersComponent } from './component/routing/users/users.component';
 import { RouterModule, Routes } from '@angular/router';
-import { FontFoundComponent } from './font-found/font-found.component';
+import { FontFoundComponent } from './component/not-found/not-found.component';
 import { AppRouting } from './appRouter.module';
-import { GardeService } from './font-found/gared.service';
-
+import { GardeService } from './component/not-found/gared.service';
+import { MainHomeComponent } from './component/main-home/main-home.component';
+import { ServiceTrComponent } from './component/service-tr/service-tr.component';
+import { HomeObservablesComponent } from './component/home-observables/home.component';
+import { UserObservablesComponent } from './component/user-observables/user.component';
+import { TdComponent } from './component/td/td.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TrComponent } from './component/tr/tr.component';
+import { FrComponent } from './component/fr/fr.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,8 +59,21 @@ import { GardeService } from './font-found/gared.service';
     UserComponent,
     UsersComponent,
     FontFoundComponent,
+    MainHomeComponent,
+    ServiceTrComponent,
+    HomeObservablesComponent,
+    UserObservablesComponent,
+    TdComponent,
+    TrComponent,
+    FrComponent,
   ],
-  imports: [BrowserModule, NgbModule, AppRouting],
+  imports: [
+    BrowserModule,
+    NgbModule,
+    AppRouting,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [
     AccountService,
     LoggingService,
