@@ -1,0 +1,11 @@
+<div class="col-md-12">
+  <label for="newChr" class="input-group-prepend">New Chr</label>
+  <input
+    type="text"
+    class=""
+    id="newChr"
+    (change)="onUpdateLiter($event)"
+    #liter
+    [value]="twoWayBinding"
+  />
+</div>

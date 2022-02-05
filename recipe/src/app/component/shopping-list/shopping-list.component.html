@@ -7,7 +7,7 @@
     <ul class="list-group">
       <a
         href=""
-        *ngFor="let ing of ingredients"
+        *ngFor="let ing of ingredients; index as i"
         class="list-group"
         style="cursor: pointer"
         >{{ ing.name }}: ({{ ing.amount }})</a

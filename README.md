@@ -263,3 +263,14 @@ export class UnlessDirective {
 </container-element>
 
 ```
+
+- if we provide an service in the parent and we also provide it in the child the child will over wirte the parent
+
+## [angular injector rules](https://angular.io/guide/hierarchical-dependency-injection)
+
+When you provide services in a component, that service is available by way of the ElementInjector at that component instance. It may also be visible at child component/directives based on visibility rules described in the resolution rules section.
+
+- When the component instance is destroyed, so is that service instance.
+- If the component's injector lacks the provider, it passes the request up to its parent component's ElementInjector.
+- If Angular still doesn't find the provider, it throws an error.
+- the hights level is the app.module.ts
