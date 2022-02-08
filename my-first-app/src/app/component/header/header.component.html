@@ -14,6 +14,15 @@
         >
           <a class="nav-link" routerLink="/home">Home</a>
         </li>
+        <li
+          class="nav-item"
+          role="presentation"
+          routerLinkActive="active"
+          fragment="loading"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link" routerLink="/http">Http</a>
+        </li>
         <li role="presentation" routerLinkActive="active">
           <a class="nav-link" routerLink="/td">Template Form Driven</a>
         </li>
@@ -28,6 +37,9 @@
         </li>
         <li role="presentation" routerLinkActive="active">
           <a class="nav-link" routerLink="home-observables">Home Observables</a>
+        </li>
+        <li role="presentation" routerLinkActive="active">
+          <a class="nav-link" routerLink="pips">pips</a>
         </li>
 
         <li role="presentation" routerLinkActive="active">

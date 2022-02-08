@@ -25,7 +25,7 @@ import { ServerComponentRouter } from './component/routing/servers/server/server
 import { ServersService } from './component/routing/servers/servers.service';
 import { UserComponent } from './component/routing/users/user/user.component';
 import { UsersComponent } from './component/routing/users/users.component';
-import { RouterModule, Routes } from '@angular/router';
+
 import { FontFoundComponent } from './component/not-found/not-found.component';
 import { AppRouting } from './appRouter.module';
 import { GardeService } from './component/not-found/gared.service';
@@ -37,6 +37,12 @@ import { TdComponent } from './component/td/td.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TrComponent } from './component/tr/tr.component';
 import { FrComponent } from './component/fr/fr.component';
+import { PipsComponent } from './component/pips/pips.component';
+import { ShortensPip } from './component/pips/shorten.pipe';
+import { FilterPipe } from './component/pips/filter.pipe';
+import { HttpSectionComponent } from './component/http-section/http-section.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './component/http-section/auth-interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,6 +72,10 @@ import { FrComponent } from './component/fr/fr.component';
     TdComponent,
     TrComponent,
     FrComponent,
+    PipsComponent,
+    ShortensPip,
+    FilterPipe,
+    HttpSectionComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +83,7 @@ import { FrComponent } from './component/fr/fr.component';
     AppRouting,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [
     AccountService,
@@ -80,7 +91,10 @@ import { FrComponent } from './component/fr/fr.component';
     NavService,
     userService,
     ServersService,
+    HttpClientModule,
     GardeService,
+    // this is a token that tell angular its http req
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

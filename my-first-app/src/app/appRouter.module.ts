@@ -14,8 +14,11 @@ import { HomeObservablesComponent } from './component/home-observables/home.comp
 import { UserObservablesComponent } from './component/user-observables/user.component';
 import { TdComponent } from './component/td/td.component';
 import { FrComponent } from './component/fr/fr.component';
+import { PipsComponent } from './component/pips/pips.component';
+import { HttpSectionComponent } from './component/http-section/http-section.component';
 const appRoute: Routes = [
   { path: '', component: MainHomeComponent },
+  { path: 'pips', component: PipsComponent },
   { path: 'home', component: HomeComponent },
   { path: 'td', component: TdComponent },
   { path: 'fr', component: FrComponent },
@@ -40,6 +43,8 @@ const appRoute: Routes = [
     ],
   },
   { path: 'home-observables', component: HomeObservablesComponent },
+  { path: 'http', component: HttpSectionComponent },
+
   { path: 'user-observables/:id', component: UserObservablesComponent },
   { path: 'services', component: ServiceTrComponent },
   { path: 'redirect', redirectTo: '/' },
