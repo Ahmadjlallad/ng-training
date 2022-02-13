@@ -31,18 +31,16 @@ import { AppRouting } from './appRouter.module';
 import { GardeService } from './component/not-found/gared.service';
 import { MainHomeComponent } from './component/main-home/main-home.component';
 import { ServiceTrComponent } from './component/service-tr/service-tr.component';
-import { HomeObservablesComponent } from './component/home-observables/home.component';
-import { UserObservablesComponent } from './component/user-observables/user.component';
-import { TdComponent } from './component/td/td.component';
+import { HomeObservablesComponent } from './component/observables/home-observables/home.component';
+import { UserObservablesComponent } from './component/observables/user-observables/user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TrComponent } from './component/tr/tr.component';
-import { FrComponent } from './component/fr/fr.component';
 import { PipsComponent } from './component/pips/pips.component';
 import { ShortensPip } from './component/pips/shorten.pipe';
 import { FilterPipe } from './component/pips/filter.pipe';
 import { HttpSectionComponent } from './component/http-section/http-section.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './component/http-section/auth-interceptor.service';
+import { NGFormsModule } from './component/forms/forms.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,11 +65,6 @@ import { AuthInterceptor } from './component/http-section/auth-interceptor.servi
     FontFoundComponent,
     MainHomeComponent,
     ServiceTrComponent,
-    HomeObservablesComponent,
-    UserObservablesComponent,
-    TdComponent,
-    TrComponent,
-    FrComponent,
     PipsComponent,
     ShortensPip,
     FilterPipe,
@@ -84,6 +77,7 @@ import { AuthInterceptor } from './component/http-section/auth-interceptor.servi
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NGFormsModule,
   ],
   providers: [
     AccountService,

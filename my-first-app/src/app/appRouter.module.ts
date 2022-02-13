@@ -10,18 +10,21 @@ import { FontFoundComponent } from './component/not-found/not-found.component';
 import { GardeService } from './component/not-found/gared.service';
 import { ServiceTrComponent } from './component/service-tr/service-tr.component';
 import { MainHomeComponent } from './component/main-home/main-home.component';
-import { HomeObservablesComponent } from './component/home-observables/home.component';
-import { UserObservablesComponent } from './component/user-observables/user.component';
-import { TdComponent } from './component/td/td.component';
-import { FrComponent } from './component/fr/fr.component';
+import { HomeObservablesComponent } from './component/observables/home-observables/home.component';
+import { UserObservablesComponent } from './component/observables/user-observables/user.component';
+
 import { PipsComponent } from './component/pips/pips.component';
 import { HttpSectionComponent } from './component/http-section/http-section.component';
 const appRoute: Routes = [
   { path: '', component: MainHomeComponent },
   { path: 'pips', component: PipsComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'td', component: TdComponent },
-  { path: 'fr', component: FrComponent },
+  {
+    path: 'forms',
+    loadChildren: () =>
+      import('./component/forms/forms.module').then((m) => m.NGFormsModule),
+  },
+
   {
     path: 'users',
     component: UsersComponent,
@@ -42,10 +45,16 @@ const appRoute: Routes = [
       { path: ':id/edit', component: EditServerComponent },
     ],
   },
-  { path: 'home-observables', component: HomeObservablesComponent },
   { path: 'http', component: HttpSectionComponent },
+  {
+    path: 'observables',
+    loadChildren: () =>
+      import('./component/observables/observables.module').then(
+        (m) => m.ObservablesModule
+      ),
+  },
 
-  { path: 'user-observables/:id', component: UserObservablesComponent },
+
   { path: 'services', component: ServiceTrComponent },
   { path: 'redirect', redirectTo: '/' },
   { path: '**', component: FontFoundComponent },

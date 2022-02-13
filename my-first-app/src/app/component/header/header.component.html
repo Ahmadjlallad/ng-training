@@ -24,10 +24,10 @@
           <a class="nav-link" routerLink="/http">Http</a>
         </li>
         <li role="presentation" routerLinkActive="active">
-          <a class="nav-link" routerLink="/td">Template Form Driven</a>
+          <a class="nav-link" routerLink="forms/td">Template Form Driven</a>
         </li>
         <li role="presentation" routerLinkActive="active">
-          <a class="nav-link" routerLink="/fr">Reactive Form Driven</a>
+          <a class="nav-link" routerLink="forms/fr">Reactive Form Driven</a>
         </li>
         <li role="presentation" routerLinkActive="active">
           <a class="nav-link" routerLink="/servers">Servers</a>
@@ -36,20 +36,28 @@
           <a class="nav-link" [routerLink]="'/users'">Users</a>
         </li>
         <li role="presentation" routerLinkActive="active">
-          <a class="nav-link" routerLink="home-observables">Home Observables</a>
+          <a class="nav-link" routerLink="observables/home-observables"
+            >Home Observables</a
+          >
         </li>
         <li role="presentation" routerLinkActive="active">
           <a class="nav-link" routerLink="pips">pips</a>
         </li>
 
         <li role="presentation" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['user-observables', 1]">
+          <a
+            class="nav-link"
+            [routerLink]="['observables/user-observables', 1]"
+          >
             User 1 Observables
           </a>
         </li>
 
         <li role="presentation" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['user-observables', 2]">
+          <a
+            class="nav-link"
+            [routerLink]="['observables/user-observables', 2]"
+          >
             User 2 Observables
           </a>
         </li>
