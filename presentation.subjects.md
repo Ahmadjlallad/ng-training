@@ -1,7 +1,5 @@
 # presentation
 
-1. history of web development
-
 1. why we would use angular
 
    - [Angular](https://angular.io/) is an Open Source JavaScript Front End Framework based on TypeScript to create single page web apps
